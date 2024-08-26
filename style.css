@@ -1,0 +1,359 @@
+/** @format */
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(226, 215, 215);
+}
+
+.gift-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 20%;
+}
+
+.gift-container.active {
+  animation: Vibration 1s ease forwards;
+}
+
+@keyframes Vibration {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.95, 1.05);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  70% {
+    transform: scale(0.9, 1.1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.gift-container .gift-box {
+  position: absolute;
+  height: 200px;
+  width: 300px;
+  background: #ec9c4a;
+  animation: Bounce 4s ease infinite forwards;
+}
+
+@keyframes Bounce {
+  0% {
+    transform: translateY(-22px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-22px);
+  }
+}
+
+.gift-box.active {
+  animation: none;
+}
+
+.gift-box::before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 200px;
+  background: #e76f51;
+  left: 124px;
+}
+
+.gift-box::after {
+  content: "";
+  position: absolute;
+  box-shadow: inset 0 10px rgba(0, 0, 0, 0.3);
+  width: 300px;
+  height: 200px;
+}
+
+.click {
+  position: absolute;
+  background: #ec9c4a;
+  width: 340px;
+  height: 90px;
+  top: -90px;
+  left: -20px;
+  cursor: pointer;
+  z-index: 1;
+  transition: 0.5s ease;
+}
+
+.click.active {
+  transition-delay: 0.75s;
+  transform: translateY(-240px);
+}
+
+.click::before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 90px;
+  background: #e76f51;
+  left: 144px;
+  z-index: 2;
+}
+
+.click::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 0;
+  border-bottom: 60px solid #e76f51;
+  border-top: 60px solid #e76f51;
+  border-left: 0px solid transparent;
+  border-right: 60px solid transparent;
+  transform: rotate(-90deg);
+  top: -93px;
+  left: 136px;
+  z-index: 3;
+}
+
+.gift-container .shadow {
+  position: absolute;
+  width: 340px;
+  height: 40px;
+  background-color: rgba(
+    180,
+    160,
+    160,
+    0.3
+  ); /* Adjust opacity for a more realistic shadow */
+  top: 79px; /* This should be the height of the gift-box plus some offset */
+  border-radius: 50%;
+  z-index: -1; /* Ensure it's behind the gift box */
+  animation: BounceOut 4s ease infinite forwards;
+}
+
+.gift-container .shadow.active {
+  animation: none;
+}
+
+@keyframes BounceOut {
+  0% {
+    transform: translateY(22px);
+    scale: 0.7;
+  }
+  50% {
+    transform: translateY(0px);
+    scale: 1;
+  }
+  100% {
+    transform: translateY(22px);
+    scale: 0.7;
+  }
+}
+
+.text {
+  position: absolute;
+  top: -100px;
+  width: 200px;
+  height: 100px;
+  background: #d6c9bc;
+  padding: 20px;
+  text-align: center;
+  font-size: 26px;
+  color: #040403;
+  border-radius: 20px;
+  z-index: -1;
+  /* z-index
+    transform: translate(-240px); */
+  transition: 0.5 ease;
+  transition-delay: 1.2s;
+}
+
+.text.active {
+  transform: translateY(-210px);
+}
+
+.text.active2 {
+  top: -100px;
+  transition-delay: 0.1s;
+}
+
+/* Base styles for all balloons */
+.balloon {
+  display: inline-block;
+  width: 150px;
+  height: 175px;
+  background: rgb(84, 132, 199);
+  border-radius: 80%;
+  position: relative;
+  box-shadow: inset -10px -10px 0 rgba(0, 0, 0, .9);
+  margin: 100px 30px;
+  transition: transform 0.5s ease;
+  z-index: 10;
+  transform-origin: bottom center;
+  left: -500px;
+}
+
+/* Keyframe animations for different movements */
+@keyframes balloonMove1 {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-150px) rotate(5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes balloonMove2 {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-120px) rotate(-5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes balloonMove3 {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-180px) rotate(10deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* Balloon 1 */
+.balloon1 {
+  animation: balloonMove1 6s ease-in-out infinite;
+}
+
+/* Balloon 2 */
+.balloon2 {
+  animation: balloonMove2 5s ease-in-out infinite;
+}
+
+/* Balloon 3 */
+.balloon3 {
+  animation: balloonMove3 7s ease-in-out infinite;
+}
+
+/* Styles for balloon strings */
+.balloon::before {
+  content: "^";
+  font-size: 20px;
+  color: rgb(89, 121, 199);
+  display: block;
+  position: absolute;
+  bottom: -12px;
+  left: 65px;
+  z-index: 10;
+}
+
+.balloon:after {
+  content: "";
+  position: relative;
+  display: inline-block;
+  top: 180px;
+  height: 250px;
+  width: 1px;
+  background: #000;
+  left: 67px;
+}
+ 
+/* Birthday Cake */
+.cake {
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: flex-end; /* Align at the bottom */
+  
+}
+
+.bottom-layer,
+.top-layer,
+.middle-layer {
+  height: 95px;
+  width: 310px;
+  position: relative;
+  background-repeat: repeat;
+  background-size: 100% 100%, 60px 100px;
+  background-image: linear-gradient(
+    transparent 50px,
+    #e3a953 50px,
+    #e3a953 50px,
+    transparent 60px
+  ),
+  radial-gradient(
+    circle at 30px 5px,
+    #713e16 30px,
+    #eac284 31px
+  );
+}
+
+.middle-layer {
+  transform: scale(0.85);
+  top: 72px;
+  animation: rise-1 2s forwards;
+}
+
+@keyframes rise-1 {
+  100% {
+    top: 7px;
+  }
+}
+
+.top-layer {
+  transform: scale(0.7);
+  top: 144px;
+  animation: rise-2 2s 2s forwards;
+}
+
+@keyframes rise-2 {
+  100% {
+    top: 26px;
+  }
+}
+
+.candle{
+  background: repeating-linear-gradient(
+    45deg,
+    #fd3018 0,
+    #fd3018 5px,
+    #ffa89e 5px,
+    #ffa89e 10px
+  );
+  height: 45px;
+  width: 15px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: rise-3 1s 4s forwards;
+  top: 62px;
+}
+
+@keyframes rise-3 {
+  100% {
+    bottom: 202px;
+  }
+}
+
+.candle::after {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  background-color: #ffee54;
+  border-radius:  0 50% 50% 50%;
+  transform: scale(0) rotate(45deg);
+  bottom: 50px;
+  left: -0.5px;
+  animation: flame 1.5s 5s forwards;
+}
+
+@keyframes flame {
+  100% {
+    transform: scale(1) rotate(45deg);
+  }
+}
+
